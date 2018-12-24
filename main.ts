@@ -26,10 +26,23 @@ namespace hex2number {
      * @param b ビット位置。, eg: 2
      */
     //% block
-    export function bittest(n: number,b:number): boolean {
-        if((n & 1<< b) != 0)
+    export function bittest(n: number, b: number): boolean {
+        if ((n & 1 << b) != 0)
             return true
         else
             return false
+    }
+    /**
+     * TODO: 数値を16進形式で表示する
+     * @param n 数値。, eg: 12345
+     */
+    //% block
+    export function ShowNumber(n: number): void {
+        for (let x = 0; x < 5; x++) {
+            for (let y = 0; y < 4; y++) {
+                if ((n & 1 << (19 - (x * 4 + y))) != 0) led.plot(x, y+1)
+                else led.unplot(x, y+1)
+            }
+        }
     }
 }
