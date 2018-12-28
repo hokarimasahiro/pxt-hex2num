@@ -33,15 +33,68 @@ namespace hex2number {
             return false
     }
     /**
+     * TODO: 論理積
+     * @param a 数値。, eg: 0x3221
+     * @param b 数値。, eg: 0xff33
+     */
+    //% block
+    export function and(a: number, b: number): number {
+        return a & b
+    }
+    /**
+     * TODO: 論理和
+     * @param a 数値。, eg: 0x3221
+     * @param b 数値。, eg: 0xff33
+     */
+    //% block
+    export function or(a: number, b: number): number {
+        return a | b
+    }
+    /**
+     * TODO: 排他的論理和
+     * @param a 数値。, eg: 0x3221
+     * @param b 数値。, eg: 0xff33
+     */
+    //% block
+    export function xor(a: number, b: number): number {
+        return a ^ b
+    }
+    /**
+     * TODO: 否定
+     * @param a 数値。, eg: 0x3221
+     */
+    //% block
+    export function not(a: number): number {
+        return ~ a
+    }
+    /**
+     * TODO: 左シフト
+     * @param a 数値。, eg: 0x3221
+     * @param b 数値。, eg: 0xff33
+     */
+    //% block
+    export function lshift(a: number, b: number): number {
+        return a << b
+    }
+    /**
+     * TODO: 右シフト
+     * @param a 数値。, eg: 0x3221
+     * @param b 数値。, eg: 0xff33
+     */
+    //% block
+    export function rshift(a: number, b: number): number {
+        return a >>> b
+    }
+    /**
      * TODO: 数値を16進形式で表示する
      * @param n 数値。, eg: 12345
      */
     //% block
     export function ShowNumber(n: number): void {
-        for (let x = 0; x < 5; x++) {
-            for (let y = 0; y < 4; y++) {
-                if ((n & 1 << (19 - (x * 4 + y))) != 0) led.plot(x, y+1)
-                else led.unplot(x, y+1)
+        for (let y = 0; y < 5; y++) {
+            for (let x = 0; x < 4; x++) {
+                if ((n & 1 << (19 - (y * 4 + x))) != 0) led.plot(x + 1, y)
+                else led.unplot(x + 1, y)
             }
         }
     }
